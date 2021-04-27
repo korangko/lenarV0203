@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:padding="2dp"
+        android:src="@drawable/ic_record_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/detail_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
+        android:padding="15dp"
+        android:src="@drawable/ic_mode_detail"
+        android:layout_marginStart="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
+        android:id="@+id/record_detail_layout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/shape_bottom_menu"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/resolution_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robotolight"
+            android:text="Resolution"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/res_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dropDownWidth="100dp"
+            android:spinnerMode="dropdown"
+            android:layout_marginStart="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/resolution_text"
+            app:layout_constraintStart_toEndOf="@+id/resolution_text"
+            app:layout_constraintTop_toTopOf="@+id/resolution_text"></Spinner>
+
+
+        <TextView
+            android:id="@+id/framerate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/robotolight"
+            android:text="Framerate"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/resolution_text"
+            app:layout_constraintTop_toBottomOf="@+id/resolution_text" />
+
+        <Spinner
+            android:id="@+id/fps_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dropDownWidth="100dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@+id/framerate_text"
+            app:layout_constraintEnd_toEndOf="@+id/res_spinner"
+            app:layout_constraintTop_toTopOf="@+id/framerate_text"></Spinner>
+
+
+        <TextView
+            android:id="@+id/bitrate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/robotolight"
+            android:text="Bitrate"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/framerate_text"
+            app:layout_constraintTop_toBottomOf="@+id/framerate_text" />
+
+        <Spinner
+            android:id="@+id/bit_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dropDownWidth="100dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@+id/bitrate_text"
+            app:layout_constraintEnd_toEndOf="@+id/fps_spinner"
+            app:layout_constraintTop_toTopOf="@+id/bitrate_text"></Spinner>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

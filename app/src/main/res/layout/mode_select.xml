@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mode_select_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_mode_round"
+        android:fontFamily="@font/robotolight"
+        android:paddingVertical="7dp"
+        android:paddingHorizontal="13dp"
+        android:text="RECORD"
+        android:textColor="#ffffff"
+        android:textSize="12dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/setting_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:padding="15dp"
+        android:src="@drawable/ic_setting"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:visibility="gone"
+        android:id="@+id/timelapse_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        app:backgroundTint="#1B1B1E"
+        app:fabSize="mini"
+        app:maxImageSize="16dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintBottom_toTopOf="@+id/mode_select_text"
+        app:layout_constraintEnd_toEndOf="@+id/mode_select_text"
+        app:srcCompat="@drawable/ic_timelapse"
+        app:tint="@color/white" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/timelapse_btn_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotolight"
+        android:text="TIMELAPSE"
+        android:textColor="#ffffff"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/timelapse_btn"
+        app:layout_constraintEnd_toStartOf="@+id/timelapse_btn"
+        app:layout_constraintTop_toTopOf="@+id/timelapse_btn" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:visibility="gone"
+        android:id="@+id/live_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        app:backgroundTint="#1B1B1E"
+        app:fabSize="mini"
+        app:maxImageSize="14dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/timelapse_btn"
+        app:layout_constraintEnd_toEndOf="@+id/timelapse_btn"
+        app:srcCompat="@drawable/ic_live"
+        app:tint="@color/white" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/live_btn_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotolight"
+        android:text="LIVE STREAEM"
+        android:textColor="#ffffff"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/live_btn"
+        app:layout_constraintEnd_toStartOf="@+id/live_btn"
+        app:layout_constraintTop_toTopOf="@+id/live_btn" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:visibility="gone"
+        android:id="@+id/record_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_video"
+        app:backgroundTint="#1B1B1E"
+        app:fabSize="mini"
+        app:maxImageSize="14dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/live_btn"
+        app:layout_constraintEnd_toEndOf="@+id/live_btn"
+        app:tint="@color/white" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/record_btn_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotolight"
+        android:text="RECORD"
+        android:textColor="#ffffff"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/record_btn"
+        app:layout_constraintEnd_toStartOf="@+id/record_btn"
+        app:layout_constraintTop_toTopOf="@+id/record_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
