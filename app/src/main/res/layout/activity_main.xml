@@ -9,6 +9,13 @@
     android:clipChildren="false"
     android:clipToPadding="false">
 
+    <TextureView
+        android:id="@+id/rtspReceiveView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/bottom_line"
         android:layout_width="match_parent"

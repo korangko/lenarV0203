@@ -6,11 +6,18 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
+import android.graphics.SurfaceTexture;
+import android.icu.text.DateTimePatternGenerator;
 import android.os.Bundle;
+import android.view.TextureView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.videolan.libvlc.MediaPlayer;
+import org.w3c.dom.Text;
 
 import java.sql.Time;
 
@@ -21,12 +28,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Boolean isAllFabsVisible;
     static Context mainContext;
 
+    //rtsp Receiver Variable
+    TextureView rtspReceiveView;
+    RtspReceiver mRtspReceiver = new RtspReceiver();
+    public static MediaPlayer mMediaPlayer = null;
+    String url = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainContext = this;
 
+        //rtsp texture view
+        rtspReceiveView = findViewById(R.id.rtspReceiveView);
+        rtspReceiveView.setSurfaceTextureListener(mSurfaceTextureListener);
         // floating button
         recordBtn = findViewById(R.id.record_btn);
         recordBtn.setOnClickListener(this);
@@ -47,7 +63,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.fragmentView, new RecordFragment());
         fragmentTransaction.commit();
+
+//        ViewGroup.LayoutParams params = rtspReceiveView.getLayoutParams();
+        //test
+//        System.out.println("josh + " + rtspReceiveView.getLayoutParams(DateTimePatternGenerator.DisplayWidth));
     }
+
+    private TextureView.SurfaceTextureListener mSurfaceTextureListener =
+            new TextureView.SurfaceTextureListener() {
+                @Override
+                public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
+                    System.out.println("josh size is " + width + ", " +height);
+                    mRtspReceiver.createPlayer(mainContext, url, rtspReceiveView, height, width);
+                }
+
+                @Override
+                public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
+                    System.out.println("josh size is " + width + ", " +height);
+                    mRtspReceiver.createPlayer(mainContext, url, rtspReceiveView, height, width);
+                }
+
+                @Override
+                public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+                    return false;
+                }
+
+                @Override
+                public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+                }
+            };
 
     @Override
     public void onClick(View v) {

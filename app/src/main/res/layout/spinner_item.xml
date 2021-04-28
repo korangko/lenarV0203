@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textSize="12dp"
-    android:gravity="end"
+    android:textAlignment="gravity"
+    android:gravity="center"
+    android:layout_gravity="end"
     android:textColor="#FDFDFD"
-    android:padding="5dp"
     android:fontFamily="@font/robotolight"
     />
