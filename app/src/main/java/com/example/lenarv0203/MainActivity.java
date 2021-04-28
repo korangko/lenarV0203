@@ -63,10 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.fragmentView, new RecordFragment());
         fragmentTransaction.commit();
-
 //        ViewGroup.LayoutParams params = rtspReceiveView.getLayoutParams();
-        //test
-//        System.out.println("josh + " + rtspReceiveView.getLayoutParams(DateTimePatternGenerator.DisplayWidth));
     }
 
     private TextureView.SurfaceTextureListener mSurfaceTextureListener =

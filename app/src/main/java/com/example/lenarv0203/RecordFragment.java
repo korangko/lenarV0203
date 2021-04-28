@@ -1,6 +1,7 @@
 package com.example.lenarv0203;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,11 @@ import static com.example.lenarv0203.MainActivity.mainContext;
 public class RecordFragment extends Fragment implements View.OnClickListener {
 
     ConstraintLayout recordDetailLayout;
-    LinearLayout recordDetailMiniLayout;
-    ImageView detailBtn;
-    Boolean isDetailOpened;
-    Spinner resSpinner,fpsSpinner,bitSpinner;
-    TextView recordResValue, recordFpsValue, recordBitValue;
-    int recRes, recFps, recBit;
+    ImageView detailBtn, recordStartStopBtn;
+    Boolean isDetailOpened, isRecording;
+    Spinner resSpinner, fpsSpinner, bitSpinner;
+    TextView recordTimeText;
+    RecordRTSP mRecordRtsp = new RecordRTSP();
 
 
     public RecordFragment() {
@@ -39,62 +39,60 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.record_fragment, container, false);
         //detail layout and button
         recordDetailLayout = view.findViewById(R.id.record_detail_layout);
-        recordDetailMiniLayout = view.findViewById(R.id.record_detail_mini_layout);
         detailBtn = view.findViewById(R.id.detail_btn);
         detailBtn.setOnClickListener(this);
-        //detail boolean
+        //boolean
         isDetailOpened = false;
-        //resolution fps bit init
-        recRes = 720;
-        recFps = 30;
-        recBit = 10;
+        isRecording = false;
+        //record start stop btn
+        recordStartStopBtn = view.findViewById(R.id.record_start_stop_btn);
+        recordStartStopBtn.setOnClickListener(this);
+        //record class call
+
         //record value textviews
-        recordResValue = view.findViewById(R.id.record_res_text);
-        recordFpsValue = view.findViewById(R.id.record_fps_text);
-        recordBitValue = view.findViewById(R.id.record_bit_text);
+        recordTimeText = view.findViewById(R.id.record_time_text);
 
         //spinner init
         ArrayAdapter resAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.record_res, R.layout.spinner_item);
         ArrayAdapter fpsAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.record_fps, R.layout.spinner_item);
         ArrayAdapter bitAdapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.record_bit, R.layout.spinner_item);
-
         resAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fpsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         resSpinner = view.findViewById(R.id.res_spinner);
         fpsSpinner = view.findViewById(R.id.fps_spinner);
         bitSpinner = view.findViewById(R.id.bit_spinner);
 
-        resSpinner.setAdapter(resAdapter); //어댑터에 연결해줍니다.
+        resSpinner.setAdapter(resAdapter);
         resSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                recordResValue.setText(resSpinner.getItemIdAtPosition(position)+"p");
-                recordResValue.setText(resSpinner.getSelectedItem()+"p");
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
-        fpsSpinner.setAdapter(fpsAdapter); //어댑터에 연결해줍니다.
+        fpsSpinner.setAdapter(fpsAdapter);
         fpsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                recordFpsValue.setText(fpsSpinner.getSelectedItem()+"fps");
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
-        bitSpinner.setAdapter(bitAdapter); //어댑터에 연결해줍니다.
+        bitSpinner.setAdapter(bitAdapter);
         bitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                recordBitValue.setText(bitSpinner.getSelectedItem()+"Mbps");
             }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
-        });
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
         return view;
     }
 
@@ -107,16 +105,57 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.detail_btn:
-                if(isDetailOpened){
+                if (isDetailOpened) {
                     recordDetailLayout.setVisibility(View.GONE);
-                    recordDetailMiniLayout.setVisibility(View.VISIBLE);
+                    recordTimeText.setVisibility(View.VISIBLE);
                     isDetailOpened = false;
-                }else{
+                } else {
                     recordDetailLayout.setVisibility(View.VISIBLE);
-                    recordDetailMiniLayout.setVisibility(View.GONE);
+                    recordTimeText.setVisibility(View.GONE);
                     isDetailOpened = true;
+                }
+                break;
+            case R.id.record_start_stop_btn:
+                if(isRecording){
+                    mRecordRtsp.recordStop(getActivity().getBaseContext());
+                    recordStartStopBtn.setImageResource(R.drawable.ic_record_start);
+                    isRecording = false;
+                }else{
+                    mRecordRtsp.recordStart(getActivity().getBaseContext());
+                    recordStartStopBtn.setImageResource(R.drawable.ic_record_stop);
+                    isRecording = true;
+                    Timer timer = new Timer();
+                    timer.start();
                 }
                 break;
         }
     }
+
+    public class Timer extends Thread {
+        final Handler handler = new Handler();
+        @Override
+        public void run() {
+            final long startTime = System.currentTimeMillis();
+            while (isRecording) {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {  // 화면에 그려줄 작업
+                        recordTimeText.setText(mRecordRtsp.recordTimeCal(startTime));
+                    }
+                });
+            }
+            handler.post(new Runnable() {
+                @Override
+                public void run() {  // 화면에 그려줄 작업
+                    recordTimeText.setText("00:00:00");
+                }
+            });
+        }
+    }
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#151517"
+    android:background="#000000"
     android:clipChildren="false"
     android:clipToPadding="false">
 
@@ -20,13 +20,13 @@
         android:id="@+id/bottom_line"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#1B1B1E"
+        android:background="#131313"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <FrameLayout
         android:id="@+id/fragmentView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="230dp"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_line" />
 
     <include
