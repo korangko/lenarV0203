@@ -1,11 +1,15 @@
 package com.example.lenarv0203;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
 import android.icu.text.DateTimePatternGenerator;
 import android.os.Bundle;
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         modeSelectText = findViewById(R.id.mode_select_text);
         modeSelectText.setOnClickListener(this);
         //floating button text
-        recordBtnText =findViewById(R.id.record_btn_text);
+        recordBtnText = findViewById(R.id.record_btn_text);
         liveBtnText = findViewById(R.id.live_btn_text);
         timeLapseBtnText = findViewById(R.id.timelapse_btn_text);
         //floating boolean
@@ -64,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentTransaction.add(R.id.fragmentView, new RecordFragment());
         fragmentTransaction.commit();
 //        ViewGroup.LayoutParams params = rtspReceiveView.getLayoutParams();
+        //permission
+        checkPermission();
     }
 
     private TextureView.SurfaceTextureListener mSurfaceTextureListener =
@@ -147,6 +153,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentView, fr);
         fragmentTransaction.commit();
+    }
+
+    //permission check class
+    void checkPermission(){
+        int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (cameraPermission == PackageManager.PERMISSION_GRANTED) {
+            // 카메라 실행 로직
+        } else {
+            requestPermission();
+        }
+    }
+    void requestPermission() {
+        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        ActivityCompat.requestPermissions(this, permissions, 321);
     }
 
 }
