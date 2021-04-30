@@ -6,22 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/mode_select_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_mode_round"
-        android:fontFamily="@font/robotolight"
-        android:paddingVertical="7dp"
-        android:paddingHorizontal="13dp"
-        android:text="RECORD"
-        android:textColor="#ffffff"
-        android:textSize="12dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <ImageView
         android:id="@+id/setting_btn"
         android:layout_width="50dp"
@@ -33,6 +17,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/background_blur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E6000000"/>
+
+    <TextView
+        android:id="@+id/mode_select_text"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/shape_mode_round"
+        android:fontFamily="@font/robotobold"
+        android:paddingHorizontal="13dp"
+        android:gravity="center_vertical"
+        android:text="RECORD"
+        android:textColor="#ffffff"
+        android:textSize="12dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:visibility="gone"
@@ -40,12 +46,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
-        app:backgroundTint="#191922"
+        app:backgroundTint="#79797C"
         app:fabSize="mini"
-        app:maxImageSize="16dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/mode_select_text"
         app:layout_constraintEnd_toEndOf="@+id/mode_select_text"
+        app:maxImageSize="25dp"
         app:srcCompat="@drawable/ic_timelapse"
         app:tint="@color/white" />
 
@@ -54,13 +60,14 @@
         android:id="@+id/timelapse_btn_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/robotolight"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/robotobold"
         android:text="TIMELAPSE"
         android:textColor="#ffffff"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/timelapse_btn"
         app:layout_constraintEnd_toStartOf="@+id/timelapse_btn"
         app:layout_constraintTop_toTopOf="@+id/timelapse_btn" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:visibility="gone"
@@ -68,12 +75,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
-        app:backgroundTint="#191922"
+        app:backgroundTint="#79797C"
         app:fabSize="mini"
-        app:maxImageSize="14dp"
-        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/timelapse_btn"
         app:layout_constraintEnd_toEndOf="@+id/timelapse_btn"
+        android:layout_marginBottom="24dp"
+        app:maxImageSize="25dp"
         app:srcCompat="@drawable/ic_live"
         app:tint="@color/white" />
 
@@ -82,12 +89,11 @@
         android:id="@+id/live_btn_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/robotolight"
-        android:text="LIVE STREAEM"
+        android:fontFamily="@font/robotobold"
+        android:text="LIVE STREAM"
         android:textColor="#ffffff"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/live_btn"
-        app:layout_constraintEnd_toStartOf="@+id/live_btn"
+        app:layout_constraintEnd_toEndOf="@+id/timelapse_btn_text"
         app:layout_constraintTop_toTopOf="@+id/live_btn" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -96,12 +102,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_video"
-        app:backgroundTint="#191922"
+        app:backgroundTint="#79797C"
         app:fabSize="mini"
-        app:maxImageSize="14dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/live_btn"
         app:layout_constraintEnd_toEndOf="@+id/live_btn"
+        app:maxImageSize="25dp"
         app:tint="@color/white" />
 
     <TextView
@@ -109,12 +115,11 @@
         android:id="@+id/record_btn_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/robotolight"
+        android:fontFamily="@font/robotobold"
         android:text="RECORD"
         android:textColor="#ffffff"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/record_btn"
-        app:layout_constraintEnd_toStartOf="@+id/record_btn"
+        app:layout_constraintEnd_toEndOf="@+id/live_btn_text"
         app:layout_constraintTop_toTopOf="@+id/record_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

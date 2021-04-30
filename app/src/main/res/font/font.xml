@@ -8,4 +8,8 @@
         android:fontStyle = "normal"
         android:fontWeight = "400"
         android:font = "@font/robotolight"/>
+    <font
+        android:fontStyle = "normal"
+        android:fontWeight = "400"
+        android:font = "@font/robotobold"/>
 </font-family>

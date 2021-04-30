@@ -9,8 +9,7 @@
         android:id="@+id/record_start_stop_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:padding="2dp"
+        android:layout_marginBottom="15dp"
         android:src="@drawable/ic_record_start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,100 +26,179 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/record_detail_layout"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginBottom="90dp"
-        android:layout_marginHorizontal="10dp"
-        android:background="@drawable/shape_bottom_menu"
+        android:layout_height="160dp"
+        android:layout_marginBottom="80dp"
+        android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
-            android:id="@+id/resolution_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="RECORDING OPTIONS"
+            android:textSize="15dp"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/robotolight"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="13dp"
-            android:fontFamily="@font/robotolight"
-            android:text="Resolution"
-            android:textColor="#ffffff"
-            android:textSize="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginBottom="5dp"/>
 
-        <Spinner
-            android:id="@+id/res_spinner"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:dropDownWidth="100dp"
-            android:spinnerMode="dropdown"
-            app:layout_constraintBottom_toBottomOf="@+id/resolution_text"
-            app:layout_constraintStart_toEndOf="@+id/resolution_text"
-            app:layout_constraintTop_toTopOf="@+id/resolution_text"></Spinner>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/shape_bottom_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
+            <TextView
+                android:id="@+id/resolution_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="@font/robotolight"
+                android:text="Resolution"
+                android:textColor="#A5A5A5"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/res_spinner"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:dropDownWidth="100dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="@+id/resolution_text"
+                app:layout_constraintStart_toEndOf="@+id/resolution_text"
+                app:layout_constraintTop_toTopOf="@+id/resolution_text"></Spinner>
+
+
+            <TextView
+                android:id="@+id/framerate_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/robotolight"
+                android:text="Framerate"
+                android:textColor="#A5A5A5"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/resolution_text"
+                app:layout_constraintTop_toBottomOf="@+id/resolution_text" />
+
+            <Spinner
+                android:id="@+id/fps_spinner"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:dropDownWidth="100dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="@+id/framerate_text"
+                app:layout_constraintEnd_toEndOf="@+id/res_spinner"
+                app:layout_constraintTop_toTopOf="@+id/framerate_text"></Spinner>
+
+
+            <TextView
+                android:id="@+id/bitrate_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/robotolight"
+                android:text="Bitrate"
+                android:textColor="#A5A5A5"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/framerate_text"
+                app:layout_constraintTop_toBottomOf="@+id/framerate_text" />
+
+            <Spinner
+                android:id="@+id/bit_spinner"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:dropDownWidth="100dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="@+id/bitrate_text"
+                app:layout_constraintEnd_toEndOf="@+id/fps_spinner"
+                app:layout_constraintTop_toTopOf="@+id/bitrate_text"></Spinner>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/record_detail_mini_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="90dp"
+        android:background="@drawable/shape_bottom_menu"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
-            android:id="@+id/framerate_text"
+            android:id="@+id/record_time_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:fontFamily="@font/robotolight"
-            android:text="Framerate"
+            android:fontFamily="@font/robotobold"
+            android:text="00:00:00"
+            android:textSize="20dp"
             android:textColor="#ffffff"
-            android:textSize="12dp"
-            app:layout_constraintEnd_toEndOf="@+id/resolution_text"
-            app:layout_constraintTop_toBottomOf="@+id/resolution_text" />
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <Spinner
-            android:id="@+id/fps_spinner"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:dropDownWidth="100dp"
-            android:spinnerMode="dropdown"
-            app:layout_constraintBottom_toBottomOf="@+id/framerate_text"
-            app:layout_constraintEnd_toEndOf="@+id/res_spinner"
-            app:layout_constraintTop_toTopOf="@+id/framerate_text"></Spinner>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/record_res_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="720P"
+                android:textSize="12dp"
+                android:textColor="#A5A5A5"
+                android:gravity="end"
+                android:layout_gravity="center"
+                android:fontFamily="@font/robotolight"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/record_fps_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30FPS"
+                android:textSize="12dp"
+                android:textColor="#A5A5A5"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/robotolight"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/record_bitrate_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10Mbps"
+                android:textSize="12dp"
+                android:textColor="#A5A5A5"
+                android:gravity="start"
+                android:layout_gravity="center"
+                android:fontFamily="@font/robotolight"
+                android:layout_weight="1"
+                />
 
 
-        <TextView
-            android:id="@+id/bitrate_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:fontFamily="@font/robotolight"
-            android:text="Bitrate"
-            android:textColor="#ffffff"
-            android:textSize="12dp"
-            app:layout_constraintEnd_toEndOf="@+id/framerate_text"
-            app:layout_constraintTop_toBottomOf="@+id/framerate_text" />
 
-        <Spinner
-            android:id="@+id/bit_spinner"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:dropDownWidth="100dp"
-            android:spinnerMode="dropdown"
-            app:layout_constraintBottom_toBottomOf="@+id/bitrate_text"
-            app:layout_constraintEnd_toEndOf="@+id/fps_spinner"
-            app:layout_constraintTop_toTopOf="@+id/bitrate_text"></Spinner>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/record_time_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/robotolight"
-        android:text="00:00:00"
-        android:textSize="30dp"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

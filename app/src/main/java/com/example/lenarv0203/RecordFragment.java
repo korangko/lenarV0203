@@ -21,7 +21,7 @@ import static com.example.lenarv0203.MainActivity.mainContext;
 
 public class RecordFragment extends Fragment implements View.OnClickListener {
 
-    ConstraintLayout recordDetailLayout;
+    LinearLayout recordDetailLayout, recordDetailMiniLayout;
     ImageView detailBtn, recordStartStopBtn;
     Boolean isDetailOpened, isRecording;
     Spinner resSpinner, fpsSpinner, bitSpinner;
@@ -39,6 +39,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.record_fragment, container, false);
         //detail layout and button
         recordDetailLayout = view.findViewById(R.id.record_detail_layout);
+        recordDetailMiniLayout = view.findViewById(R.id.record_detail_mini_layout);
         detailBtn = view.findViewById(R.id.detail_btn);
         detailBtn.setOnClickListener(this);
         //boolean
@@ -47,7 +48,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         //record start stop btn
         recordStartStopBtn = view.findViewById(R.id.record_start_stop_btn);
         recordStartStopBtn.setOnClickListener(this);
-        //record class call
+        //background blurring
 
         //record value textviews
         recordTimeText = view.findViewById(R.id.record_time_text);
@@ -107,11 +108,11 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
             case R.id.detail_btn:
                 if (isDetailOpened) {
                     recordDetailLayout.setVisibility(View.GONE);
-                    recordTimeText.setVisibility(View.VISIBLE);
+                    recordDetailMiniLayout.setVisibility(View.VISIBLE);
                     isDetailOpened = false;
                 } else {
                     recordDetailLayout.setVisibility(View.VISIBLE);
-                    recordTimeText.setVisibility(View.GONE);
+                    recordDetailMiniLayout.setVisibility(View.GONE);
                     isDetailOpened = true;
                 }
                 break;

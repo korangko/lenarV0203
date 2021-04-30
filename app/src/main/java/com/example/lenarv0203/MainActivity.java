@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RtspReceiver mRtspReceiver = new RtspReceiver();
     public static MediaPlayer mMediaPlayer = null;
     String url = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+
+    //background blur
+    ImageView backgroundBlur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recordBtnText = findViewById(R.id.record_btn_text);
         liveBtnText = findViewById(R.id.live_btn_text);
         timeLapseBtnText = findViewById(R.id.timelapse_btn_text);
+        //background Blurring
+        backgroundBlur = findViewById(R.id.background_blur);
         //floating boolean
         isAllFabsVisible = false;
         //fragment initiating
@@ -122,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void modeShowAndHide(){
         if(isAllFabsVisible){
+            backgroundBlur.setVisibility(View.GONE);
             recordBtn.hide();
             liveBtn.hide();
             timeLapseBtn.hide();
@@ -130,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             timeLapseBtnText.setVisibility(View.GONE);
             isAllFabsVisible = false;
         }else{
+            backgroundBlur.setVisibility(View.VISIBLE);
             recordBtn.show();
             liveBtn.show();
             timeLapseBtn.show();
