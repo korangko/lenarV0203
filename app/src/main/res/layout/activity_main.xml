@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#222121"
+    android:background="#283540"
     android:clipChildren="false"
     android:clipToPadding="false">
 
@@ -21,8 +21,8 @@
     <ImageView
         android:id="@+id/bottom_line"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="#323233"
+        android:layout_height="50dp"
+        android:background="#1A2129"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <FrameLayout

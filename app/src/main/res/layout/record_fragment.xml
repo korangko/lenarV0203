@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/record_start_stop_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="15dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/ic_record_start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +19,6 @@
         android:id="@+id/detail_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="15dp"
         android:padding="15dp"
         android:src="@drawable/ic_mode_detail"
         android:layout_marginStart="80dp"
