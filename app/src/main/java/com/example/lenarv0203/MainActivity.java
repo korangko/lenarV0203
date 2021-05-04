@@ -109,18 +109,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 modeShowAndHide();
                 break;
             case R.id.record_btn:
-                modeShowAndHide();
                 switchFragment(0);
+                modeShowAndHide();
                 modeSelectText.setText("RECORD");
                 break;
             case R.id.live_btn:
-                modeShowAndHide();
                 switchFragment(1);
+                modeShowAndHide();
                 modeSelectText.setText("LIVE STREAM");
                 break;
             case R.id.timelapse_btn:
-                modeShowAndHide();
                 switchFragment(2);
+                modeShowAndHide();
                 modeSelectText.setText("TIMELAPSE");
                 break;
         }
