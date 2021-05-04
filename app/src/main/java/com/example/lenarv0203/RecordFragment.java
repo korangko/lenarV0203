@@ -12,12 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-
-import org.w3c.dom.Text;
-
-import static com.example.lenarv0203.MainActivity.mainContext;
 
 public class RecordFragment extends Fragment implements View.OnClickListener {
 
@@ -26,7 +21,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
     Boolean isDetailOpened, isRecording;
     Spinner resSpinner, fpsSpinner, bitSpinner;
     TextView recordTimeText;
-    RecordRTSP mRecordRtsp = new RecordRTSP();
+    RtspRecord mRtspRecord = new RtspRecord();
 
 
     public RecordFragment() {
@@ -118,11 +113,11 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.record_start_stop_btn:
                 if(isRecording){
-                    mRecordRtsp.recordStop(getActivity().getBaseContext());
+                    mRtspRecord.recordStop(getActivity().getBaseContext());
                     recordStartStopBtn.setImageResource(R.drawable.ic_record_start);
                     isRecording = false;
                 }else{
-                    mRecordRtsp.recordStart(getActivity().getBaseContext());
+                    mRtspRecord.recordStart(getActivity().getBaseContext());
                     recordStartStopBtn.setImageResource(R.drawable.ic_record_stop);
                     isRecording = true;
                     Timer timer = new Timer();
@@ -146,7 +141,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {  // 화면에 그려줄 작업
-                        recordTimeText.setText(mRecordRtsp.recordTimeCal(startTime));
+                        recordTimeText.setText(mRtspRecord.recordTimeCal(startTime));
                     }
                 });
             }

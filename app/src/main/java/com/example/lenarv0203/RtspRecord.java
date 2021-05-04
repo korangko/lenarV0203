@@ -14,7 +14,7 @@ import java.util.Date;
 import static com.arthenica.mobileffmpeg.Config.RETURN_CODE_CANCEL;
 import static com.arthenica.mobileffmpeg.Config.RETURN_CODE_SUCCESS;
 
-public class RecordRTSP {
+public class RtspRecord {
     SimpleDateFormat formatter = new SimpleDateFormat("yyMMdd_hhmmss");
     Date date = new Date();
     long recordingId;

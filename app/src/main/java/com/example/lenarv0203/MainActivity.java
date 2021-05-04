@@ -11,20 +11,15 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
-import android.icu.text.DateTimePatternGenerator;
 import android.os.Bundle;
 import android.view.TextureView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.videolan.libvlc.MediaPlayer;
-import org.w3c.dom.Text;
-
-import java.sql.Time;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,8 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static MediaPlayer mMediaPlayer = null;
     String url = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
 
-    //background blur
-    ImageView backgroundBlur;
+    //background blur, setting btn
+    ImageView backgroundBlur, settingBtn;
+
+    //test
+    RtmpBroadcast mRtmpBroadcast = new RtmpBroadcast();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //rtsp texture view
         rtspReceiveView = findViewById(R.id.rtspReceiveView);
         rtspReceiveView.setSurfaceTextureListener(mSurfaceTextureListener);
+        //setting button
+        settingBtn = findViewById(R.id.setting_btn);
+        settingBtn.setOnClickListener(this);
         // floating button
         recordBtn = findViewById(R.id.record_btn);
         recordBtn.setOnClickListener(this);
@@ -122,6 +124,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 switchFragment(2);
                 modeShowAndHide();
                 modeSelectText.setText("TIMELAPSE");
+                break;
+            case R.id.setting_btn:
+                mRtmpBroadcast.broadcastStart(this);
                 break;
         }
     }
