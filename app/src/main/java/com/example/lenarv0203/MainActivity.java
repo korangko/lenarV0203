@@ -21,12 +21,18 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.videolan.libvlc.MediaPlayer;
 
+import soup.neumorphism.NeumorphButton;
+import soup.neumorphism.NeumorphImageButton;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     FloatingActionButton recordBtn, liveBtn, timeLapseBtn;
-    TextView recordBtnText, liveBtnText, timeLapseBtnText, modeSelectText;
+    TextView recordBtnText, liveBtnText, timeLapseBtnText;
     Boolean isAllFabsVisible;
     static Context mainContext;
+
+    NeumorphImageButton settingBtn;
+    NeumorphButton modeSelectText;
 
     //rtsp Receiver Variable
     TextureView rtspReceiveView;
@@ -35,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String url = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
 
     //background blur, setting btn
-    ImageView backgroundBlur, settingBtn;
+    ImageView backgroundBlur;
 
     //test
     RtmpBroadcast mRtmpBroadcast = new RtmpBroadcast();
@@ -85,13 +91,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
                     System.out.println("josh size is " + width + ", " +height);
-                    mRtspReceiver.createPlayer(mainContext, url, rtspReceiveView, height, width);
+//                    mRtspReceiver.createPlayer(mainContext, url, rtspReceiveView, height, width);
                 }
 
                 @Override
                 public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
                     System.out.println("josh size is " + width + ", " +height);
-                    mRtspReceiver.createPlayer(mainContext, url, rtspReceiveView, height, width);
+//                    mRtspReceiver.createPlayer(mainContext, url, rtspReceiveView, height, width);
                 }
 
                 @Override
@@ -126,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 modeSelectText.setText("TIMELAPSE");
                 break;
             case R.id.setting_btn:
-                mRtmpBroadcast.broadcastStart(this);
+//                mRtmpBroadcast.broadcastStart(this);
                 break;
         }
     }

@@ -14,10 +14,14 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import soup.neumorphism.NeumorphCardView;
+import soup.neumorphism.NeumorphImageButton;
+
 public class RecordFragment extends Fragment implements View.OnClickListener {
 
-    LinearLayout recordDetailLayout, recordDetailMiniLayout;
-    ImageView detailBtn, recordStartStopBtn;
+    LinearLayout recordDetailLayout;
+    ImageView detailBtn;
+    NeumorphImageButton recordStartStopBtn;
     Boolean isDetailOpened, isRecording;
     Spinner resSpinner, fpsSpinner, bitSpinner;
     TextView recordTimeText;
@@ -34,7 +38,6 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.record_fragment, container, false);
         //detail layout and button
         recordDetailLayout = view.findViewById(R.id.record_detail_layout);
-        recordDetailMiniLayout = view.findViewById(R.id.record_detail_mini_layout);
         detailBtn = view.findViewById(R.id.detail_btn);
         detailBtn.setOnClickListener(this);
         //boolean
@@ -103,11 +106,9 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
             case R.id.detail_btn:
                 if (isDetailOpened) {
                     recordDetailLayout.setVisibility(View.GONE);
-                    recordDetailMiniLayout.setVisibility(View.VISIBLE);
                     isDetailOpened = false;
                 } else {
                     recordDetailLayout.setVisibility(View.VISIBLE);
-                    recordDetailMiniLayout.setVisibility(View.GONE);
                     isDetailOpened = true;
                 }
                 break;

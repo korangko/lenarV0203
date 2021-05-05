@@ -5,25 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#283540"
+    android:background="#ECEDED"
     android:clipChildren="false"
     android:clipToPadding="false">
 
     <TextureView
         android:id="@+id/rtspReceiveView"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/bottom_line"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#1A2129"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <FrameLayout
         android:id="@+id/fragmentView"
